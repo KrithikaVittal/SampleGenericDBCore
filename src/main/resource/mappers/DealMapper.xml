@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DealMapper">
+
+	<insert id="insertDeal" keyProperty="dealID" useGeneratedKeys="true" parameterType="com.kvs.mybatis.sample.entity.Deal" >
+		 insert into deal (deal_name,deal_desc,last_updated)
+		 values (#{dealName},#{dealDesc},#{lastUpdated})
+	</insert>
+	
+	<insert id="insertAllDeal" lang="raw" statementType="PREPARED" >
+		 insert into deal (deal_name,deal_desc,last_updated)
+	     values (#{dealName},#{dealDesc},#{lastUpdated})
+	</insert>
+
+	<resultMap id="deal" autoMapping="true"  type="com.kvs.mybatis.sample.entity.Deal">
+		<id property="dealID" column="DEAL_ID"/>		
+		<result property="dealDesc" column="DEAL_DESC"/>
+		<result property="dealName" column="DEAL_NAME"/>
+		<result property="lastUpdated" column="LAST_UPDATED"/>
+	</resultMap> 
+
+	<select id="selectDeal" resultMap="deal">
+		select
+		* from
+		deal 
+		where deal_id = #{id}
+	</select>
+	
+	<select id="selectAllDeal" resultMap="deal" >
+		select
+		* from
+		deal 
+	</select>	
+
+	<update id="updateDeal" parameterType="com.kvs.mybatis.sample.entity.Deal">
+		update deal 
+		<set>
+		<if test="dealName != null">
+		   deal_name = #{dealName} ,
+		</if>
+		<if test="dealDesc != null">
+		   deal_desc = #{dealDesc} ,
+		</if>
+		<if test="lastUpdated != null">
+		   last_updated = #{lastUpdated} ,
+		</if>
+		</set>
+		where
+		deal_id = #{dealID}
+	</update>
+
+	<delete id="deleteDeal" parameterType="int">
+		delete
+		from deal
+		where
+		deal_id = #{dealID}
+	</delete>
+
+</mapper>
