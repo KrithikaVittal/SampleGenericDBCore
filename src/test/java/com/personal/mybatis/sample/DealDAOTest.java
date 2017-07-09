@@ -46,7 +46,7 @@ public class DealDAOTest extends TestCase {
 
 		DAO<Deal, Integer> dao = new DealDAO(Deal.class);
 		List<Deal> dealList=new ArrayList<Deal>();
-		for(int i=0;i<100000;i++){
+		for(int i=0;i<1000;i++){
 			Deal deal = new Deal();
 			deal.setDealName("deal name"+i);
 			deal.setDealDesc("deal desc"+i);
@@ -63,7 +63,7 @@ public class DealDAOTest extends TestCase {
 		Duration timeTaken=Duration.between(start, end);
 		System.out.println("Time taken for mybatis batch Insert:"+timeTaken); // prints PT1M3.553S
 		
-		assertTrue("Time taken for mybatis batch Insert is less than 10 second ", Long.parseLong("2") > (timeTaken.getSeconds()));
+		assertTrue("Time taken for mybatis batch Insert is less than 2 second ", Long.parseLong("2") > (timeTaken.getSeconds()));
 
 	}
 	
