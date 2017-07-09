@@ -48,8 +48,8 @@ public class DealDAOTest extends TestCase {
 		List<Deal> dealList=new ArrayList<Deal>();
 		for(int i=0;i<100000;i++){
 			Deal deal = new Deal();
-			deal.setDealName("test");
-			deal.setDealDesc("test");
+			deal.setDealName("deal name"+i);
+			deal.setDealDesc("deal desc"+i);
 			deal.setLastUpdated(new Timestamp(new Date().getTime()));
 			dealList.add(deal);
 		}
@@ -63,7 +63,7 @@ public class DealDAOTest extends TestCase {
 		Duration timeTaken=Duration.between(start, end);
 		System.out.println("Time taken for mybatis batch Insert:"+timeTaken); // prints PT1M3.553S
 		
-		assertTrue("Time taken for mybatis batch Insert is less than 2 second ", Long.parseLong("2") > (timeTaken.getSeconds()));
+		assertTrue("Time taken for mybatis batch Insert is less than 10 second ", Long.parseLong("2") > (timeTaken.getSeconds()));
 
 	}
 	
@@ -73,7 +73,7 @@ public class DealDAOTest extends TestCase {
 		DAO<Deal, Integer> dao = new DealDAO(Deal.class);
 
 		Deal deal = new Deal();
-		deal.setDealID(1);
+		deal.setDealID(100004);
 		deal.setDealName("test123");
 		deal.setDealDesc("test");
 		deal.setLastUpdated(new Timestamp(new Date().getTime()));
@@ -107,7 +107,7 @@ public class DealDAOTest extends TestCase {
 
 		DAO<Deal, Integer> dao = new DealDAO(Deal.class);
 		
-		Deal deal = dao.findEntityById(1);
+		Deal deal = dao.findEntityById(100004);
 		assertNotNull(deal);
 
 	}
