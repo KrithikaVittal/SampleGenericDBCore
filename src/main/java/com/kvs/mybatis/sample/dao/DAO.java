@@ -11,6 +11,7 @@ import com.kvs.mybatis.sample.entity.BaseEntity;
  *
  * @param <T> is the object to be manipulated for CRUD operation.
  * @param <PK> is the primary key in the db table/unique identifier of the object.
+ * test
  */
 public interface DAO<T extends BaseEntity<PK>, PK> {
 
