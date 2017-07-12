@@ -1,4 +1,4 @@
-package com.kvs.mybatis.sample.entity.impl;
+package com.kvs.mybatis.sample.dao.impl;
 
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;

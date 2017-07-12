@@ -1,8 +1,8 @@
 package com.kvs.mybatis.sample.dao;
 
 
+import com.kvs.mybatis.sample.dao.impl.DAOImpl;
 import com.kvs.mybatis.sample.entity.Deal;
-import com.kvs.mybatis.sample.entity.impl.DAOImpl;
 
 /**
  * Abtract class defines database access methods to deal table

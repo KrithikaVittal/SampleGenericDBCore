@@ -6,7 +6,7 @@ import java.util.List;
 import com.kvs.mybatis.sample.entity.BaseEntity;
 
 /**
- * Interface provides methods for the CRUD operation of deal objects in Database.
+ * Interface provides methods for the CRUD operation of objects in Database.
  * @author kvs
  *
  * @param <T> is the object to be manipulated for CRUD operation.

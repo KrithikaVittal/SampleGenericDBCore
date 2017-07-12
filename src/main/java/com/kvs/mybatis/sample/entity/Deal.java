@@ -2,6 +2,11 @@ package com.kvs.mybatis.sample.entity;
 
 import java.sql.Timestamp;
 
+/**
+ * Entity object that represents the DEAL table in db.
+ * @author kvs
+ *
+ */
 public class Deal extends BaseEntity<Integer>{
 	
 	private Integer dealID;

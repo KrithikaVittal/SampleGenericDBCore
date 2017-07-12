@@ -2,8 +2,8 @@ package com.kvs.mybatis.sample.entity;
 
 
 /**
- * Base class to be extended by every Domain object in DB.
- * Class provides the common methods for all domain objects
+ * Base class to be extended by every entity object in DB.
+ * Class provides the common methods for all entity objects
  * 
  * @author kvs
  *

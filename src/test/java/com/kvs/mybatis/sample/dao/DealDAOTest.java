@@ -1,4 +1,4 @@
-package com.personal.mybatis.sample;
+package com.kvs.mybatis.sample.dao;
 
 
 
