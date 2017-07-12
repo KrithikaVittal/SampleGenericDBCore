@@ -1,0 +1,4 @@
+com.kvs.mybatis.sample.dao
+com.kvs.mybatis.sample.dao.impl
+com.kvs.mybatis.sample.entity
+com.kvs.mybatis.sample.persistence
