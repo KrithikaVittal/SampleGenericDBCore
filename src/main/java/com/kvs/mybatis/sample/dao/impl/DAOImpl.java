@@ -21,6 +21,8 @@ import com.kvs.mybatis.sample.persistence.SqlSessionUtils;
 public abstract class DAOImpl<T extends BaseEntity<PK>, PK> implements DAO<T, PK> {
 
 	private Class<T> type;
+	
+	private static final String MAPPER="Mapper.";
 
 	/**
 	 * Constructs new instance of DAOImpl
@@ -42,7 +44,7 @@ public abstract class DAOImpl<T extends BaseEntity<PK>, PK> implements DAO<T, PK
 
 		SqlSession session = SqlSessionUtils.getSession();
 		try {
-			String query = this.type.getSimpleName() + "Mapper" + "." + "insert" + this.type.getSimpleName();
+			String query = this.type.getSimpleName() + MAPPER + "insert" + this.type.getSimpleName();
 			session.insert(query, t);
 			return t.getPrimaryKey();
 		} catch (Exception e) {
@@ -58,7 +60,7 @@ public abstract class DAOImpl<T extends BaseEntity<PK>, PK> implements DAO<T, PK
 	public Integer deleteEntity(PK id) {
 		SqlSession session = SqlSessionUtils.getSession();
 		try {
-			String query = this.type.getSimpleName() + "Mapper" + "." + "delete" + this.type.getSimpleName();
+			String query = this.type.getSimpleName() + MAPPER + "delete" + this.type.getSimpleName();
 			return session.delete(query, id);
 		} catch (Exception e) {
 			session.rollback();
@@ -73,7 +75,7 @@ public abstract class DAOImpl<T extends BaseEntity<PK>, PK> implements DAO<T, PK
 	public T findEntityById(PK id) {
 		SqlSession session = SqlSessionUtils.getSession();
 		try {
-			String query = this.type.getSimpleName() + "Mapper" + "." + "select" + this.type.getSimpleName();
+			String query = this.type.getSimpleName() + MAPPER + "select" + this.type.getSimpleName();
 			T t = session.selectOne(query, id);
 			return t;
 		} catch (Exception e) {
@@ -87,7 +89,7 @@ public abstract class DAOImpl<T extends BaseEntity<PK>, PK> implements DAO<T, PK
 	public Integer updateEntity(T t) {
 		SqlSession session = SqlSessionUtils.getSession();
 		try {
-			String query = this.type.getSimpleName() + "Mapper" + "." + "update" + this.type.getSimpleName();
+			String query = this.type.getSimpleName() + MAPPER + "update" + this.type.getSimpleName();
 			return session.update(query, t);
 		} catch (Exception e) {
 			session.rollback();
@@ -102,7 +104,7 @@ public abstract class DAOImpl<T extends BaseEntity<PK>, PK> implements DAO<T, PK
 	public void createAllEntities(List<T> list, int batchSize) {
 		SqlSession session = SqlSessionUtils.getSqlSession(true);
 		try {
-			String query = this.type.getSimpleName() + "Mapper" + "." + "insertAll" + this.type.getSimpleName();// +"Batch";
+			String query = this.type.getSimpleName() + MAPPER + "insertAll" + this.type.getSimpleName();// +"Batch";
 
 			int size = list.size();
 			for (int i = 0; i < size; i++) {
@@ -127,7 +129,7 @@ public abstract class DAOImpl<T extends BaseEntity<PK>, PK> implements DAO<T, PK
 	public List<T> findAllEntities() {
 		SqlSession session = SqlSessionUtils.getSession();
 		try {
-			String query = this.type.getSimpleName() + "Mapper" + "." + "selectAll" + this.type.getSimpleName();
+			String query = this.type.getSimpleName() + MAPPER + "selectAll" + this.type.getSimpleName();
 			List<T> tList = session.selectList(query);
 			return tList;
 		} catch (Exception e) {
